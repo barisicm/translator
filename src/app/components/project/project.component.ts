@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-project',
+  templateUrl: './project.component.html',
+  styleUrls: ['./project.component.scss']
 })
-export class AppComponent {
+export class ProjectComponent implements OnInit {
+
+  constructor() { }
+
   columnDefs = [
     { headerName: 'Key', field: 'key' },
     { headerName: 'Hrvatski', field: 'hr' },
@@ -17,4 +20,8 @@ export class AppComponent {
     { key: 'car', hr: 'Automobil', en: 'Car' },
     { key: 'weapon', hr: 'Oružje', en: 'Weapon' }
   ];
+
+  ngOnInit() {
+  }
+
 }
