@@ -8,6 +8,8 @@ import { ProjectComponent } from './components/project/project.component';
 import { ProjectPickerComponent } from './components/project-picker/project-picker.component';
 import { ConfigureComponent } from './components/configure/configure.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    FormsModule,
+    ReactiveFormsModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   exports: [
     NavbarComponent

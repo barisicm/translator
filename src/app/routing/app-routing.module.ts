@@ -8,8 +8,8 @@ import { AppInitGuard } from '../appInitGuard/app.initguard';
 const routes: Routes = [
   {
     path: '',
-    component: ProjectComponent
-    // canActivate: [AppInitGuard]
+    component: ProjectComponent,
+    canActivate: [AppInitGuard]
   },
   {
     path: 'configure',
@@ -17,16 +17,19 @@ const routes: Routes = [
   },
   {
     path: 'projectPicker',
-    component: ProjectPickerComponent
+    component: ProjectPickerComponent,
+    canActivate: [AppInitGuard]
   },
   {
     path: '**',
-    redirectTo: ''
+    redirectTo: '',
+    canActivate: [AppInitGuard]
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AppInitGuard]
 })
 export class AppRoutingModule { }

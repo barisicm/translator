@@ -1,7 +1,58 @@
 <div class="container-fluid">
-    <div class="row flex-xl-nowrap">    
-      <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-        <p>text2</p>
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-2 col-xl-2 py-md-3 ">
+      
+    </div>
+    <div class="col-12 col-md-8 col-xl-8 py-md-3 bd-content pt-4" role="main">
+      <div class="container full-height">
+        <div class="row align-items-center full-height">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8 mx-auto">
+            <div class="jumbotron text-center">
+              <h1 class="display-4 text-left">Translator set-up</h1>
+              <form>
+                <div class="row justify-content-center">
+                  <div class="col-12 col-sm-8 col-md-8 col-lg-6 col-xl-6 ">
+                    <input type="text" class="form-control" placeholder="Ime">
+                  </div>
+                </div>
+                <div class="row justify-content-center pt-3">
+                  <div class="col-12 col-sm-8 col-md-8 col-lg-6 col-xl-6">
+                    <input type="text" class="form-control" placeholder="Prezime">
+                  </div>
+                </div>
+                <div class="row justify-content-center pt-3">
+                  <div class="col-12 col-sm-8 col-md-8 col-lg-6 col-xl-6">
+                    <input type="text" class="form-control" placeholder="Tvrtka">
+                  </div>
+                </div>
+                <div class="row justify-content-center pt-3">
+                  <div class="form-group col-12 col-sm-8 col-md-8 col-lg-6 col-xl-6">
+                    <form [formGroup]="myForm">
+                      <ng-multiselect-dropdown 
+                        name="city" 
+                        [placeholder]="'Select City'" 
+                        [data]="cities"
+                        formControlName="city" 
+                        [settings]="dropdownSettings" 
+                        (onSelect)="onItemSelect($event)">
+                      </ng-multiselect-dropdown>
+                    </form>
+                </div>
+                </div>
+                
+                
+                
+                <div class="col">
+                  <button type="button" class="btn btn-info">Spremite i pošaljite</button>
+                </div>  
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    <div class="col-12 col-md-2 col-xl-2 py-md-3 pl-md-5">
+      
+    </div>
   </div>
+</div>
