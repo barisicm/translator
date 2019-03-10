@@ -7,21 +7,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectComponent implements OnInit {
 
-  constructor() { }
 
-  columnDefs = [
-    { headerName: 'Key', field: 'key' },
-    { headerName: 'Hrvatski', field: 'hr' },
-    { headerName: 'Engleski', field: 'en'}
-  ];
 
-  rowData = [
-    { key: 'helloWorld', hr: 'Pozdrav svijete', en: 'Hello World' },
-    { key: 'car', hr: 'Automobil', en: 'Car' },
-    { key: 'weapon', hr: 'Oružje', en: 'Weapon' }
-  ];
+  private columnDefs;
+  private rowData;
+  private defaultColDef;
+
+  constructor() {
+    this.columnDefs = [
+      { headerName: 'Key', field: 'key', sortable: true, filter: true },
+      { headerName: 'Hrvatski', field: 'hr', sortable: true, filter: true },
+      { headerName: 'Engleski', field: 'en', sortable: true, filter: true}
+    ];
+
+    this.rowData = [
+      { key: 'helloWorld', hr: 'Pozdrav svijete', en: 'Hello World' },
+      { key: 'car', hr: 'Automobil', en: 'Car' },
+      { key: 'weapon', hr: 'Oružje', en: 'Weapon' }
+    ];
+
+    this.defaultColDef = {
+      editable: true,
+      resizable: true
+    };
+  }
+
 
   ngOnInit() {
   }
-
 }
