@@ -7,17 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectComponent implements OnInit {
 
-
+  private gridApi;
+  private gridColumnApi;
 
   private columnDefs;
   private rowData;
   private defaultColDef;
 
+  private gridOptions;
+
   constructor() {
     this.columnDefs = [
-      { headerName: 'Key', field: 'key', sortable: true, filter: true },
-      { headerName: 'Hrvatski', field: 'hr', sortable: true, filter: true },
-      { headerName: 'Engleski', field: 'en', sortable: true, filter: true}
+      { headerName: 'Key', field: 'key' },
+      { headerName: 'Hrvatski', field: 'hr' },
+      { headerName: 'Engleski', field: 'en' }
     ];
 
     this.rowData = [
@@ -28,10 +31,24 @@ export class ProjectComponent implements OnInit {
 
     this.defaultColDef = {
       editable: true,
-      resizable: true
+      resizable: true,
+      sortable: true,
+      filter: true
+    };
+
+    this.gridOptions = {
+      columnDefs: this.columnDefs,
+      rowData: this.rowData,
+      onCellEditingStopped: (event) => {
+        console.log(event);
+      },
+      defaultColDef: this.defaultColDef
     };
   }
 
+  callbackFunction() {
+    console.log('function activated');
+  }
 
   ngOnInit() {
   }
