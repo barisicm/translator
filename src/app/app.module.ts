@@ -10,6 +10,7 @@ import { ConfigureComponent } from './components/configure/configure.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { SingleControlComponent } from './components/single-control/single-control.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
     ProjectComponent,
     ProjectPickerComponent,
     ConfigureComponent,
-    NavbarComponent
+    NavbarComponent,
+    SingleControlComponent
   ],
   imports: [
     BrowserModule,
