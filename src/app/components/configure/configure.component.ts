@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SingleControlComponent } from '../single-control/single-control.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LanguageFetchService } from '../../services/configurator/language-fetch/language-fetch.service';
+import { LanguageModel } from '../../models/languageModel/language-model';
 
 @Component({
   selector: 'app-configure',
@@ -9,14 +11,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ConfigureComponent implements OnInit {
 
-        dropdownList = [];
+        dropdownList: LanguageModel[];
         selectedItems = [];
         dropdownSettings = {};
         placeholder = 'name';
+        testList: Array<LanguageModel>;
 
         public appConfigForm: FormGroup;
 
-        constructor(private formBuilder: FormBuilder) {
+        constructor(
+            private formBuilder: FormBuilder,
+            private languageFetch: LanguageFetchService,
+            ) {
             this.appConfigForm = formBuilder.group({
                 name: ['', Validators.required],
                 surname: ['', Validators.required],
@@ -26,10 +32,11 @@ export class ConfigureComponent implements OnInit {
         }
 
         ngOnInit() {
-            this.dropdownList = [{ shortcode: 'en', language_name: 'Engleski' }]; // GET Languages
+            console.log( this.languageFetch.getLanguages());
+            this.dropdownList = this.languageFetch.getLanguages();
             this.dropdownSettings = {
-                idField: 'shortcode',
-                textField: 'language_name',
+                idField: 'shortCode',
+                textField: 'languageName',
                 selectAllText: 'Označite sve',
                 unSelectAllText: 'Odznačite sve'
             };
@@ -38,4 +45,5 @@ export class ConfigureComponent implements OnInit {
         onSubmit(form) {
             console.warn(this.appConfigForm.value);
         }
+
 }
