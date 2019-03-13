@@ -11,7 +11,8 @@ import { LanguageModel } from '../../models/languageModel/language-model';
 })
 export class ConfigureComponent implements OnInit {
 
-        dropdownList: LanguageModel[];
+        dropdownList: LanguageModel[] = [];
+        dropdownList2: LanguageModel[] = [];
         selectedItems = [];
         dropdownSettings = {};
         placeholder = 'name';
@@ -32,8 +33,9 @@ export class ConfigureComponent implements OnInit {
         }
 
         ngOnInit() {
-            console.log( this.languageFetch.getLanguages());
-            this.dropdownList = this.languageFetch.getLanguages();
+            this.languageFetch.getLanguages().subscribe((data) => {
+                this.dropdownList = Array.from(data);
+            }),
             this.dropdownSettings = {
                 idField: 'shortCode',
                 textField: 'languageName',
