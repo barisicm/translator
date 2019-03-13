@@ -18,7 +18,8 @@ export class LanguageFetchService {
 
   getLanguages(): Observable<LanguageModel[]> {
     return this.http.get(this.languagesData).pipe(
-      map((data: any[]) => data.map((item) => this.adapter.adapt(item))),
+      map((data: any[]) => data.map((item) => this.adapter.adapt(item)))
     );
   }
 }
+

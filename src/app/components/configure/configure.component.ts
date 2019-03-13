@@ -34,7 +34,10 @@ export class ConfigureComponent implements OnInit {
 
         ngOnInit() {
             this.languageFetch.getLanguages().subscribe((data) => {
-                this.dropdownList = Array.from(data);
+                const licSet = new Set();
+                const uniques = data.filter(({languageName}) => !licSet.has(languageName) && licSet.add(languageName));
+
+                this.dropdownList = Array.from(uniques);
             }),
             this.dropdownSettings = {
                 idField: 'shortCode',
