@@ -47,8 +47,9 @@ export class ConfigureComponent implements OnInit {
             };
         }
 
-        onSubmit(form) {
-            console.warn(this.appConfigForm.value);
+        onSubmit() {
+            localStorage.setItem('configData', JSON.stringify(this.appConfigForm.value));
+            localStorage.setItem('isConfigured', 'true');
         }
 
 }
