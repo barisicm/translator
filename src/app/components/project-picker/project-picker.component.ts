@@ -27,8 +27,11 @@ export class ProjectPickerComponent implements OnInit {
         fileEntry.file((file: File) => {
 
           // Here you can access the real file
-          console.log(droppedFile.relativePath, file);
+          console.log(file);
 
+          const reader = new FileReader();
+          reader.readAsText(file, 'UTF-8'); // you could also read images and other binaries
+          console.log(reader.result);
         });
       } else {
         // It was a directory (empty directories are added, otherwise only files)
