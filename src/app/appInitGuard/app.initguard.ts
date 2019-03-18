@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate } from '@angular/router';
+import { ConfiguratorService } from '../services/configurator/configurator/configurator.service';
 
 @Injectable()
 export class AppInitGuard implements CanActivate {
-    constructor(protected router: Router) {
+    constructor(private config: ConfiguratorService, protected router: Router) {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-      if (localStorage.getItem('isUserRegistered')) {
-        this.router.navigate(['/', 'configure']);
+      if (this.config.isSet()) {
         return true;
       } else {
         this.router.navigate(['/', 'configure']);
-        return true;
+        return false;
       }
     }
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SingleControlComponent } from '../single-control/single-control.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LanguageFetchService } from '../../services/configurator/language-fetch/language-fetch.service';
 import { LanguageModel } from '../../models/languageModel/language-model';
+import { Router } from '@angular/router';
+import { ConfiguratorService } from 'src/app/services/configurator/configurator/configurator.service';
 
 @Component({
   selector: 'app-configure',
@@ -11,18 +12,15 @@ import { LanguageModel } from '../../models/languageModel/language-model';
 })
 export class ConfigureComponent implements OnInit {
 
-        dropdownList: LanguageModel[] = [];
-        dropdownList2: LanguageModel[] = [];
-        selectedItems = [];
+        dropdownListDataSource: LanguageModel[] = [];
         dropdownSettings = {};
-        placeholder = 'name';
-        testList: Array<LanguageModel>;
-
         public appConfigForm: FormGroup;
 
         constructor(
+            private router: Router,
             private formBuilder: FormBuilder,
             private languageFetch: LanguageFetchService,
+            private config: ConfiguratorService,
             ) {
             this.appConfigForm = formBuilder.group({
                 name: ['', Validators.required],
@@ -34,10 +32,10 @@ export class ConfigureComponent implements OnInit {
 
         ngOnInit() {
             this.languageFetch.getLanguages().subscribe((data) => {
-                const licSet = new Set();
-                const uniques = data.filter(({languageName}) => !licSet.has(languageName) && licSet.add(languageName));
+                const set = new Set();
+                const uniqueLanguages = data.filter(({languageName}) => !set.has(languageName) && set.add(languageName));
 
-                this.dropdownList = Array.from(uniques);
+                this.dropdownListDataSource = Array.from(uniqueLanguages);
             }),
             this.dropdownSettings = {
                 idField: 'shortCode',
@@ -48,8 +46,8 @@ export class ConfigureComponent implements OnInit {
         }
 
         onSubmit() {
-            localStorage.setItem('configData', JSON.stringify(this.appConfigForm.value));
-            localStorage.setItem('isConfigured', 'true');
+            this.config.setToLocalStorage(this.appConfigForm.value);
+            this.router.navigate(['/', 'projectPicker']);
         }
 
 }

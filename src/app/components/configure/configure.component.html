@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row flex-xl-nowrap">
     <div class="col-12 col-md-2 col-xl-2 py-md-3 ">
-      
+
     </div>
     <div class="col-12 col-md-8 col-xl-8 py-md-3 bd-content pt-4" role="main">
       <div class="container full-height">
@@ -10,7 +10,6 @@
             <div class="jumbotron text-center">
               <h1 class="text-center">Postavke prevoditelja</h1>
               <form [formGroup]="appConfigForm" (ngSubmit)="onSubmit()">
-                
                 <app-single-control 
                   [control]="appConfigForm.controls['name']"
                   [name]="'name'"
@@ -26,44 +25,18 @@
                   [name]="'company'"
                   [placeholder]="'Tvrtka'">
                 </app-single-control>
-
                 <div class="row justify-content-center pt-4">
                   <div class="form-group col-12 col-sm-8 col-md-8 col-lg-6 col-xl-6">
                       <ng-multiselect-dropdown 
                         name="languages" 
                         [placeholder]="'Odaberite jezike'" 
-                        [data]="dropdownList"
+                        [data]="dropdownListDataSource"
                         formControlName="languages"
                         [settings]="dropdownSettings" 
                         >
                       </ng-multiselect-dropdown>
                     </div>
                 </div>
-                <!-- <div class="row justify-content-center pt-4">
-                  <div class="col-12 col-sm-8 col-md-8 col-lg-6 col-xl-6 ">
-                    <input type="text" class="form-control" ngModel
-                    #nameField="ngModel" name="name" placeholder="Ime" required
-                    minlength="3">
-                  </div>
-                </div>
-
-                <div class="row justify-content-center pt-4">
-                  <div class="col-12 col-sm-8 col-md-8 col-lg-6 col-xl-6">
-                    <input type="text" class="form-control" ngModel
-                    #nameField="ngModel" name="surname" placeholder="Prezime">
-                  </div>
-                </div>
-
-                <div class="row justify-content-center pt-4">
-                  <div class="col-12 col-sm-8 col-md-8 col-lg-6 col-xl-6">
-                    <input type="text" class="form-control" ngModel
-                    #nameField="ngModel" name="company" placeholder="Tvrtka">
-                  </div>
-                </div>
-
-                
-
-                </div> -->
                 <div class="col">
                   <button type="submit" [disabled]="!appConfigForm.valid" class="btn btn-info">Spremite</button>
                 </div>  
@@ -74,7 +47,6 @@
       </div>
     </div>
     <div class="col-12 col-md-2 col-xl-2 py-md-3 pl-md-5">
-      
     </div>
   </div>
 </div>

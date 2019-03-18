@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
 import { LanguageModel, LanguageAdapter } from '../../../models/languageModel/language-model';
-import { promise } from 'protractor';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -11,14 +9,17 @@ import { map } from 'rxjs/operators';
 })
 export class LanguageFetchService {
 
-  languagesData = 'https://restcountries.eu/rest/v2/all';
+  languagesDataUrl = 'https://restcountries.eu/rest/v2/all';
   languagesList: LanguageModel[] = [];
 
-  constructor(private http: HttpClient, private adapter: LanguageAdapter) { }
+  constructor(private http: HttpClient, private languageAdapter: LanguageAdapter) { }
 
   getLanguages(): Observable<LanguageModel[]> {
-    return this.http.get(this.languagesData).pipe(
-      map((data: any[]) => data.map((item) => this.adapter.adapt(item)))
+    return this.http.get(this.languagesDataUrl).pipe(
+      map((data: any[]) => data.map(
+          (item) => this.languageAdapter.adapt(item)
+          )
+        )
     );
   }
 }

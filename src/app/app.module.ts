@@ -12,6 +12,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SingleControlComponent } from './components/single-control/single-control.component';
+import { FileDropModule } from 'ngx-file-drop';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SingleControlComponent } from './components/single-control/single-contr
     AgGridModule.withComponents([]),
     FormsModule,
     ReactiveFormsModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    FileDropModule
   ],
   exports: [
     NavbarComponent

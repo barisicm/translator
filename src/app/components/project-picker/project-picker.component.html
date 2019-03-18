@@ -1,7 +1,30 @@
 <div class="container-fluid">
-    <div class="row flex-xl-nowrap">    
-      <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-        <p>text</p>
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-2 col-xl-2 py-md-3 ">
+    </div>
+    <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+      <div class="container full-height">
+        <div class="row align-items-center full-height">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8 mx-auto">
+            <div class="jumbotron text-center">
+              <h1 class="text-center">Postavke prevoditelja</h1>
+              <div class="col">
+                  <button type="submit" class="btn btn-info">Započnite novi projekt</button>
+                </div>
+              <form>
+                <h4>Prenesite datoteke postojećeg projekta</h4>
+                <file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
+                (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                    <span>optional content (don't set dropZoneLabel then)</span>
+                </file-drop>
+                <div class="col">
+                  <button type="submit" class="btn btn-info">Započnite novi projekt</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
