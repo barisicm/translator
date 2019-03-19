@@ -25,8 +25,5 @@ export class LanguageAdapter implements Adapter<LanguageModel> {
         item.languages[item.languages.length - 1].name
     );
   }
-
-  removeDuplicates() {
-
-  }
+  
 }
