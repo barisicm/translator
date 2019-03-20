@@ -1,4 +1,7 @@
 {
-"hello": "Hello",
-"helloWorld": "Hello World"
+    "language": { "en":"English" },
+    "wordsList": [
+        { "hello": "Hello" },
+        { "helloWorld": "Hello World" }
+    ]
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ConfiguratorService } from 'src/app/services/configurator/configurator.service';
 import { UploadEvent, UploadFile, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 
@@ -11,18 +12,19 @@ import { UploadEvent, UploadFile, FileSystemFileEntry, FileSystemDirectoryEntry 
 export class ProjectPickerComponent implements OnInit {
 
   public files: UploadFile[] = [];
+  public filesList: any[];
 
-  constructor(private configService: ConfiguratorService) {
+  constructor(private configService: ConfiguratorService, private router: Router) {
   }
 
   ngOnInit() {
+    this.filesList = [];
   }
 
   public dropped(event: UploadEvent) {
-    const filesList: any[] = [];
+
     this.files = event.files;
     for (const droppedFile of event.files) {
-
       if (droppedFile.fileEntry.isFile) {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
         fileEntry.file((file: File) => {
@@ -31,8 +33,8 @@ export class ProjectPickerComponent implements OnInit {
           reader.addEventListener('loadend', () => {
             const result = reader.result;
             const removeNewlines = result.toString().replace(/(\r\n|\n|\r)/gm, '');
-            filesList.push(removeNewlines);
-
+            this.filesList.push(removeNewlines);
+            console.log(this.filesList);
           });
         });
       } else {
@@ -40,24 +42,26 @@ export class ProjectPickerComponent implements OnInit {
         console.log(droppedFile.relativePath, fileEntry);
       }
     }
-    this.saveFilesListToLocalStorage(filesList);
   }
 
-  public saveFilesListToLocalStorage(data): void {
-    let str;
-    data.forEach(element => {
-      str = str + element + ',';
+  public saveFilesListToLocalStorage(): void {
+    let str = '';
+    this.filesList.forEach(element => {
+      // str = str + element + ',';
+      str = str + element;
     });
-    localStorage.setItem('filesList', str);
+    localStorage.setItem('filesList', JSON.stringify(str));
   }
-
 
 
   public initNewProject(): void {
-    console.log('init NEw');
+    localStorage.setItem('newProject', 'true');
+    this.router.navigate(['/', 'project']);
   }
 
   public initExistingProject(): void {
-    console.log('init existing');
+    this.saveFilesListToLocalStorage();
+    localStorage.setItem('newProject', 'false');
+    this.router.navigate(['/', 'project']);
   }
 }

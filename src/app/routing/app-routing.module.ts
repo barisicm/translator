@@ -7,7 +7,7 @@ import { AppInitGuard } from '../appInitGuard/app.initguard';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'project',
     component: ProjectComponent,
     canActivate: [AppInitGuard]
   },

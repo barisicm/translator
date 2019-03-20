@@ -28,7 +28,7 @@
                     </table>
                 </div>
                 <div class="pb-4">
-                  <file-drop  (onFileDrop)="dropped($event)" [accept]="accept">
+                  <file-drop (onFileDrop)="dropped($event)" [accept]="accept">
                     <span>Ovdje ostavite svoje datoteke.</span>
                   </file-drop>
                 </div>
@@ -36,7 +36,7 @@
                   <p>Napomena: Aplikacija je za sada napravljena da funkcionira samo sa JSON datotekema. Te također morate uploadati sve relevantne datoteke odjednom.</p>
                 </div>
                 <div>
-                  <button type="submit" (click)="initExistingProject()" class="btn btn-info">Nastavite sa učitanim datotekama</button>
+                  <button type="submit" [disabled]="filesList.length == 0" (click)="initExistingProject()" class="btn btn-info">Nastavite sa učitanim datotekama</button>
                 </div>
               </form>
             </div>
