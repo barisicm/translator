@@ -6,19 +6,37 @@
       <div class="container full-height">
         <div class="row align-items-center full-height">
           <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8 mx-auto">
-            <div class="jumbotron text-center">
-              <h1 class="text-center">Postavke prevoditelja</h1>
-              <div class="col">
-                  <button type="submit" class="btn btn-info">Započnite novi projekt</button>
+            <div class="jumbotron text-left">
+              <h3 class="">Izbornik</h3>
+              <div class="pt-2 pb-4">
+                  <button type="submit" class="btn btn-info" (click)="initNewProject()">Započnite novi projekt</button>
                 </div>
               <form>
-                <h4>Prenesite datoteke postojećeg projekta</h4>
-                <file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
-                (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
-                    <span>optional content (don't set dropZoneLabel then)</span>
-                </file-drop>
-                <div class="col">
-                  <button type="submit" class="btn btn-info">Započnite novi projekt</button>
+                <h5>Prenesite prijevode postojećeg projekta</h5>
+                <div class="upload-table">
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Prijevodi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="upload-name-style table-striped">
+                            <tr *ngFor="let item of files; let i=index">
+                                <td><strong>{{ item.relativePath }}</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pb-4">
+                  <file-drop  (onFileDrop)="dropped($event)" [accept]="accept">
+                    <span>Ovdje ostavite svoje datoteke.</span>
+                  </file-drop>
+                </div>
+                <div>
+                  <p>Napomena: Aplikacija je za sada napravljena da funkcionira samo sa JSON datotekema. Te također morate uploadati sve relevantne datoteke odjednom.</p>
+                </div>
+                <div>
+                  <button type="submit" (click)="initExistingProject()" class="btn btn-info">Nastavite sa učitanim datotekama</button>
                 </div>
               </form>
             </div>

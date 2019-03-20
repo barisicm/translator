@@ -10,3 +10,7 @@
 .full-height{
     height: 100%;
 }
+
+.table th {
+    padding-left:0!important;
+}

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LanguageFetchService } from '../../services/configurator/language-fetch/language-fetch.service';
+import { LanguageService } from '../../services/language/language.service';
 import { LanguageModel } from '../../models/languageModel/language-model';
 import { Router } from '@angular/router';
-import { ConfiguratorService } from 'src/app/services/configurator/configurator/configurator.service';
+import { ConfiguratorService } from 'src/app/services/configurator/configurator.service';
 
 @Component({
   selector: 'app-configure',
@@ -19,7 +19,7 @@ export class ConfigureComponent implements OnInit {
         constructor(
             private router: Router,
             private formBuilder: FormBuilder,
-            private languageFetch: LanguageFetchService,
+            private languageFetch: LanguageService,
             private config: ConfiguratorService,
             ) {
             this.appConfigForm = formBuilder.group({

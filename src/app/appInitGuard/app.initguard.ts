@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate } from '@angular/router';
-import { ConfiguratorService } from '../services/configurator/configurator/configurator.service';
+import { ConfiguratorService } from '../services/configurator/configurator.service';
 
 @Injectable()
 export class AppInitGuard implements CanActivate {

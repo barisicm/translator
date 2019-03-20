@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LanguageFetchService } from './language-fetch.service';
+import { LanguageFetchService } from './language.service';
 
-describe('LanguageFetchService', () => {
+describe('LanguageService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
