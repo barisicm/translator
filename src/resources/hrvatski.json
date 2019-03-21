@@ -1,0 +1,7 @@
+{
+    "language": { "hr":"Hrvatski" },
+    "wordsList": [
+        { "hello": "Pozdrav" },
+        { "helloWorld": "Pozdrav Svijete" }
+    ]
+}

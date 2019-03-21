@@ -45,12 +45,20 @@ export class ProjectPickerComponent implements OnInit {
   }
 
   public saveFilesListToLocalStorage(): void {
-    let str = '';
-    this.filesList.forEach(element => {
-      // str = str + element + ',';
-      str = str + element;
-    });
-    localStorage.setItem('filesList', JSON.stringify(str));
+    let str = '[';
+    if (this.filesList.length > 1){
+      this.filesList.forEach(element => {
+        str = str + element + ',';
+      });
+      str = str.substring(0, str.length - 1);
+      str = str + ']';
+    } else {
+      this.filesList.forEach(element => {
+        str = str + element;
+      });
+    }
+
+    localStorage.setItem('filesList', str);
   }
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UploadedFileModel } from 'src/app/models/uploadedFileModel/uploaded-file-model';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-project',
@@ -64,8 +65,8 @@ export class ProjectComponent implements OnInit {
   }
 
   initExistingProject(): void {
-    // const filesList: UploadedFileModel =  as UploadedFileModel;
-    console.log(JSON.parse('{"language":{"en":"English"},"wordsList":[{"hello":"Hello"},{"helloWorld":"Hello World"}]}'));
+    const filesList: UploadedFileModel[] = JSON.parse(localStorage.getItem('filesList'));
+    console.log(filesList[0].language);
     // ignore configuration;
     // load languages files list from local storage
     // add languages to table header
