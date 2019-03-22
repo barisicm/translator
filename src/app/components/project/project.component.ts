@@ -18,15 +18,10 @@ export class ProjectComponent implements OnInit {
 
   constructor() {
     this.columnDefs = [
-      { headerName: 'Key', field: 'key' },
-      { headerName: 'Hrvatski', field: 'hr' },
-      { headerName: 'Engleski', field: 'en' }
+      { headerName: 'Key', field: 'key' }
     ];
 
     this.rowData = [
-      { key: 'helloWorld', hr: 'Pozdrav svijete', en: 'Hello World' },
-      { key: 'car', hr: 'Automobil', en: 'Car' },
-      { key: 'weapon', hr: 'Oružje', en: 'Weapon' }
     ];
 
     this.defaultColDef = {
@@ -65,15 +60,50 @@ export class ProjectComponent implements OnInit {
   }
 
   initExistingProject(): void {
-    const filesList: UploadedFileModel[] = JSON.parse(localStorage.getItem('filesList'));
-    console.log(filesList[0].language);
-    // ignore configuration;
+    const tempRowData = [];
     // load languages files list from local storage
+    const filesList: UploadedFileModel[] = JSON.parse(localStorage.getItem('filesList')) as UploadedFileModel[];
+    console.log(filesList[0].language.shortCode);
+
+    // create an row object prototype
+    const rowObj = { key: '' };
+    filesList.forEach(file => {
+      rowObj[file.language.shortCode] = '';
+    });
+
     // add languages to table header
-    // iterate over files list
-    // for each file, read all key value pairs
-    // for each key value pair check if key exists
-    // if key exists add value of that key to specific column
-    // if key does not exist, create key and add value of that key to specific column
+    filesList.forEach(file => {
+      this.columnDefs.push({ headerName: file.language.languageName, field: file.language.shortCode});
+    });
+
+    filesList.forEach(file => {
+      if (filesList.indexOf(file) === 0) {
+        file.wordsList.forEach(word => {
+          const rowObjInstance = Object.create(rowObj);
+          rowObjInstance.key = word.key;
+          rowObjInstance[file.language.shortCode] = word.value;
+          tempRowData.push(rowObjInstance);
+        });
+      } else {
+        // iterate over files list
+        file.wordsList.forEach(word => {
+          // for each file, read all key value pairs
+          tempRowData.forEach(row => {
+            // for each key value pair check if key exists
+            if (row.key === word.key) {
+              // if key exists add value of that key to specific column
+              row[file.language.shortCode] = word.value;
+            }
+          });
+        });
+      }
+
+
+    });
+
+    // push row to table
+    tempRowData.forEach(row => {
+      this.rowData.push(row);
+    });
   }
 }

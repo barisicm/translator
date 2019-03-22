@@ -1,7 +1,20 @@
 {
-    "language": { "en":"English" },
+    "language": {
+        "shortCode": "en",
+        "languageName": "English"
+    },
     "wordsList": [
-        { "hello": "Hello" },
-        { "helloWorld": "Hello World" }
+        {
+            "key": "hello",
+            "value": "Hello"
+        },
+        {
+            "key": "helloWorld",
+            "value": "Hello World"
+        },
+        {
+            "key": "wpn",
+            "value": "Weapon"
+        }
     ]
 }
