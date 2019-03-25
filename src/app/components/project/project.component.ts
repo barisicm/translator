@@ -97,8 +97,6 @@ export class ProjectComponent implements OnInit {
           });
         });
       }
-
-
     });
 
     // push row to table

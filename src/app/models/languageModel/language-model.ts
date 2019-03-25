@@ -19,11 +19,10 @@ export class LanguageModel {
 })
 export class LanguageAdapter implements Adapter<LanguageModel> {
 
-  adapt(item: any): LanguageModel {
-    return new LanguageModel(
-        item.languages[item.languages.length - 1].iso639_1,
-        item.languages[item.languages.length - 1].name
-    );
-  }
-  
+    adapt(item: any): LanguageModel {
+        return new LanguageModel(
+            item.languages[item.languages.length - 1].iso639_1,
+            item.languages[item.languages.length - 1].name
+        );
+    }
 }
