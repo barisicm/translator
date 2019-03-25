@@ -1,0 +1,24 @@
+{
+    "language": {
+        "shortCode": "hr",
+        "languageName": "Hrvatski"
+    },
+    "wordsList": [
+        {
+            "key": "hello",
+            "value": "Pozdrav"
+        },
+        {
+            "key": "helloWorld",
+            "value": "Pozdrav Svijete"
+        },
+        {
+            "key": "wpn",
+            "value": "Oružje"
+        },
+        {
+            "key": "notebook",
+            "value": "Bilježnica"
+        }
+    ]
+}

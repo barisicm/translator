@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-2 col-xl-2 py-md-3 ">
+
+    </div>
+    <div class="col-12 col-md-8 col-xl-8 py-md-3 bd-content pt-4" role="main">
+      <div class="container full-height">
+        <div class="row align-items-center full-height">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8 mx-auto">
+            <div class="jumbotron text-center">
+              <h1 class="text-center">Postavke prevoditelja</h1>
+              <form [formGroup]="appConfigForm" (ngSubmit)="onSubmit()">
+                <app-single-control 
+                  [control]="appConfigForm.controls['name']"
+                  [name]="'name'"
+                  [placeholder]="'Ime'">
+                </app-single-control>
+                <app-single-control 
+                  [control]="appConfigForm.controls['surname']"
+                  [name]="'surname'"
+                  [placeholder]="'Prezime'">
+                </app-single-control>
+                <app-single-control 
+                  [control]="appConfigForm.controls['company']"
+                  [name]="'company'"
+                  [placeholder]="'Tvrtka'">
+                </app-single-control>
+                <div class="row justify-content-center pt-4">
+                  <div class="form-group col-12 col-sm-8 col-md-8 col-lg-6 col-xl-6">
+                      <ng-multiselect-dropdown 
+                        name="languages" 
+                        [placeholder]="'Odaberite jezike'" 
+                        [data]="dropdownListDataSource"
+                        formControlName="languages"
+                        [settings]="dropdownSettings" 
+                        >
+                      </ng-multiselect-dropdown>
+                    </div>
+                </div>
+                <div class="col">
+                  <button type="submit" [disabled]="!appConfigForm.valid" class="btn btn-info">Spremite</button>
+                </div>  
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-2 col-xl-2 py-md-3 pl-md-5">
+    </div>
+  </div>
+</div>

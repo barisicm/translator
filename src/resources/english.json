@@ -1,0 +1,24 @@
+{
+    "language": {
+        "shortCode": "en",
+        "languageName": "English"
+    },
+    "wordsList": [
+        {
+            "key": "hello",
+            "value": "Hello"
+        },
+        {
+            "key": "helloWorld",
+            "value": "Hello World"
+        },
+        {
+            "key": "wpn",
+            "value": "Weapon"
+        },
+        {
+            "key": "notebook",
+            "value": "Notebook"
+        }
+    ]
+}
